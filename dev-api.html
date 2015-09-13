@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>URL Meta - Developer docs on how to use the API</title>
+	<meta name="humans" content="humans.txt" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="google-site-verification" content="qDWb5r_GXyRT7r9Rao83qhFpKRKjhaOIA7l19rLFZ6s" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+	<meta property="og:title" content="URL Meta" />
+	<meta property="og:description" content="URL Meta solves the common developer problem: scrape the web. It gives you the detail about a URL and it is Free." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://urlmeta.org" />
+	<meta property="og:image" content="https://urlmeta.org/apple-touch-icon.png" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:creator" content="@moinism" />
+<body>
+	<header>
+		<div class="container">
+			<h1 style="margin:20px;">URL Meta</h1>
+			<h2 style="margin:10px;">API Docs</h2>
+			<p class="menu">
+				<a href="/" class="item">Home</a>
+				<a href="for-websites.html" class="item">Website owner FAQs</a>
+			</p>
+		</div>
+	</header>
+
+	<div class="container" style="width:60%;">
+		<section name="basics" id="basics">
+			<h3><a href="#basics">API Basics</a></h3>
+			<p>
+				<table>
+					<tr>
+						<td>API Endpoint</td>
+						<td>
+							<span class="codeline">api.urlmeta.org</span><br/>
+							Should always be accessed over <span class="codeline">https://</span>
+						</td>
+					</tr>
+					<tr>
+						<td>Method</td>
+						<td>
+							<span class="codeline">GET</span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="text-align:center;border-bottom:0;padding:20px;"><b>Parameters</b></td>
+					</tr>
+					<tr>
+						<td><span class="codeline">url</span>
+						</td>
+						<td>
+							<i>required</i><br/>
+							Accepts the target URL along with scheme i.e: <span class="codeline">http</span> or <span class="codeline">https</span>
+						</td>
+					</tr>
+					<tr>
+						<td><span class="codeline">onlyHead</span>
+						</td>
+						<td>
+							<i>optional</i><br/>
+							If present, only header information will be fetched. Example use case:<br/>
+							Get file size of a remote .ZIP file
+							<br/>
+							If a target URL responds with a content type other than <span class="codeline">text/html</span>, it would become an <span class="codeline">onlyHead</span> request by default.
+						</td>
+					</tr>
+				</table>
+			</p>
+		</section>
+
+		<section name="response" id="response">
+			<h3><a href="#response">Response</a></h3>
+			<p>Following objects are returned in response</p>
+			<p>
+				<table>
+					<tr>
+						<td>
+							<span class="codeline">result</span>
+						</td>
+						<td>
+							<table>
+								<tr>
+									<td>
+										<span class="codeline">status</span>
+									</td>
+									<td>
+										<span class="codeline">OK</span> or <span class="codeline">ERROR</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="codeline">reason</span>
+									</td>
+									<td>
+										Will be present only if the <span class="codeline">status</span> is <span class="codeline">ERROR</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="codeline">onlyHead</span>
+									</td>
+									<td>
+										Will be present only if the request was <span class="codeline">onlyHead</span>
+									</td>
+								</tr>
+								</table>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="codeline">meta</span>
+						</td>
+						<td>
+							Will contain all the meta about URL
+						</td>
+					</tr>
+				</table>
+				<p>You can expect following attributes about a URL in <span class="codeline">meta</span> object:</p>
+				<p>
+					<ul>
+						<li>Page URL</li>
+						<li>Page title</li>
+						<li>Description</li>
+						<li>Favicon</li>
+						<li>Image</li>
+						<li>Logo</li>
+						<li>Content Type</li>
+						<li>Content Size (in bytes)</li>
+						<li>Feed URL. e.g: RSS, ATOM, etc</li>
+					</ul>
+				</p>
+				<p>
+					Of course, all the attributes depend on their existance in the target page.
+				</p>
+			</p>
+		</section>
+		<section name="example-response" id="example-response">
+			<h3><a href="#example-response">Example Response</a></h3>
+			<div class="code" style="display: block;">
+				<div class="head">Successful Call</div>
+			<div class="body">{
+ "result": {
+   "status": "OK"
+ },
+ "meta": {
+   "url": "https://startupbundle.com/",
+   "type": "text/html",
+   "title": "Startup Bundle - The best and biggest resource bundle for startups",
+   "description": "This bundle contains all the tools and resource a startup could use. All the stuff on a massive discounted price. upto 98% off.",
+   "favicon": "https://startupbundle.com/favicon.png"
+ }
+}
+</div>
+		</div>
+		<p></p>
+		<div class="code" style="display: block;">
+				<div class="head">Successful Call with <span class="codeline">onlyHead</span></div>
+			<div class="body">{
+ "result": {
+   "status": "OK"
+ },
+ "meta": {
+   "url": "https://lab.moin.im/public/favicon.png",
+   "type": "image/png",
+   "size": "16892"
+ }
+}
+</div>
+		</div>
+		<p></p>
+		<div class="code" style="display: block;">
+				<div class="head">Error</div>
+			<div class="body">{
+ "result": {
+   "status": "ERROR",
+   "code": 4,
+   "reason": "Could not find what you were looking for."
+ }
+}
+</div>
+		</div>
+		<p></p>
+		</section>
+		<section name="error-codes" id="error-codes">
+			<h3><a href="#error-codes">Error Codes</a></h3>
+			<table>
+					<tr>
+						<th>
+							Code
+						</th>
+						<th>
+							Description
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<span class="codeline">1</span>
+						</td>
+						<td>
+						Required parameter <span class="codeline">url</span> was not found
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="codeline">2</span>
+						</td>
+						<td>
+						<span class="codeline">url</span> was present but not valid.
+						<div class="code" style="box-shadow:none; padding:2px;">Mostly because URL scheme was missing. It must have <i>http://</i> or <i>https://</i></div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="codeline">3</span>
+						</td>
+						<td>
+						Website does not allow crawling. It has <span class="codeline">urlmeta</span> header or meta set to <span class="codeline">no</span>. Read more about <a href="/for-websites.html#restrict-crawling">crawling restriction</a>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="codeline">4</span>
+						</td>
+						<td>
+							http response status code was greater than 400.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="codeline">5</span>
+						</td>
+						<td>
+							Target URL did not respond within 5 seconds.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="codeline">6</span>
+						</td>
+						<td>
+							There was an error in parsing HTML of website. Normally, because of an internal error.
+						</td>
+					</tr>
+				</table>
+		</section>
+		<section name="api-terms" id="api-terms">
+			<h3><a href="#api-terms">Terms of API usage</a></h3>
+			<p>URLMeta.org API is totaly free to use. You can make as many requests as you wish. But to keep it free, you must not abuse it's use.</p>
+
+			<p>Do not use this service to build search engine crawlers, indexers. If a request is repitative, or you think you'll also need it again then do cache it. It'll lower the load on our server as well as the requested site bandwidth.</p>
+		</section>
+		<section name="contribute" id="contribute">
+			<h3><a href="#contribute">Contribute to this service</a></h3>
+			<p>There are a lot of ways you can contribute to this service:</p>
+			<ul>
+				<li>Share it - Let others know about and save their time too.</li>
+				<li>Write sample code - Write the sample codes and tutorials in a programming language you know. We'll put that code and give you the credit of it.</li>
+				<li>Point out bugs - If there's a bug you've found then it'll also be a great contribution of yours. You'll get credit of it.</li>
+				<li>Suggest something usefull - If you think we can use another tool to make this API more powerfull then do not hesitate to tell us.</li>
+			</ul>
+			<p>Use the <a href="https://docs.google.com/forms/d/1HD5KOapK9zXoyU9oBs3YqHqBxL2MHJj4nN4piW7ky2M/" target="_BLANK">form here</a> to contribute your sample code, bug reports and suggestions.</p>
+		</section>
+	</div>
+
+	<footer>
+		Made with <span class="heart" title="Love">&hearts;</span> &nbsp;&nbsp;&nbsp; in <span title="Islamabad, Pakistan">Pakistan</span> by <a href="https://moin.im?ref=urlmeta" target="_blank" class="wlink">Moin Uddin</a>
+
+		<div class="links">
+			<a href="dev-api.html">API Docs</a>
+			<a href="for-websites.html">For Websites</a>
+			<a href="humans.txt" target="_BLANK">About</a>
+			<a href="https://docs.google.com/forms/d/1HD5KOapK9zXoyU9oBs3YqHqBxL2MHJj4nN4piW7ky2M/" title="contact for any suggestion, bug or help." target="_BLANK">Contact</a>
+		</div>
+	</footer>
+
+	<link rel="stylesheet" type="text/css" href="assets/css/normal.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300|Source+Code+Pro:300,400|Open+Sans:400,300' rel='stylesheet' type='text/css'>
+</body>
+</html>

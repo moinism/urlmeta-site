@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>URL Meta - FAQs about how it works</title>
+	<meta name="humans" content="humans.txt" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="google-site-verification" content="qDWb5r_GXyRT7r9Rao83qhFpKRKjhaOIA7l19rLFZ6s" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+	<meta property="og:title" content="URL Meta" />
+	<meta property="og:description" content="URL Meta solves the common developer problem: scrape the web. It gives you the detail about a URL and it is Free." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://urlmeta.org" />
+	<meta property="og:image" content="https://urlmeta.org/apple-touch-icon.png" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:creator" content="@moinism" />
+<body>
+	<header>
+		<div class="container">
+			<h1 style="margin:20px;">URL Meta</h1>
+			<h2 style="margin:10px;">FAQs For Websites</h2>
+			<p class="menu">
+				<a href="/" class="item">Home</a>
+				<a href="dev-api.html" class="item">API Docs</a>
+			</p>
+		</div>
+	</header>
+
+	<div class="container" style="width:60%;">
+		<section name="author" id="author">
+			<h3><a href="#author">Who made it?</a></h3>
+			<p>
+				I made it. My name is Moin and I'm from Islamabad, Pakistan. I work as a freelance full stack consultant &amp; developer. Here's <a href="https://moin.im" target="_blank">my website</a> in case you were wondering.
+			</p>
+			<p>
+				I made this because I had to make crawlers/indexers for most of the jobs I done previously. So I thought why not an API to serve this purpose. Here it is.
+			</p>
+		</section>
+
+		<section name="what-is-extracted" id="what-is-extracted">
+			<h3><a href="#what-is-extracted">What does it extract?</a></h3>
+			<p>
+				URLMeta.org only extracts the data in <span class="codeline">head</span> section of a page. Title, Description, Image, Logo and Feed. It looks for RSS, ATOM and oEmbed feed. All of these these information are only extracted and provided if present in the page.
+			</p>
+			<p>
+				It looks for <a href="http://ogp.me/" target="_blank">Open Graph protocol</a> first, then for <a href="https://dev.twitter.com/cards/overview"target="_blank">Twitter card</a> then <a href="https://schema.org/"target="_blank">Schema</a> for <span class="codeline">image</span> &amp; <span class="codeline">description</span> found in <span class="codeline">itemprop</span> attributes.
+			</p>
+			<p>
+				If no protocol is found then it will fallback to <span class="codeline">title</span> tag and <span class="codeline">description</span> attribute of <span class="codeline">meta</span> tag.
+			</p>
+		</section>
+
+		<section name="AJAX-content" id="AJAX-content">
+			<h3><a href="#AJAX-content">Can it crawl AJAX-based websites too?</a></h3>
+			<p>
+				No. Not yet. But I'm working on it. It'll use the same method as Google does for AJAX crawling. Google's method and guidlines can be found, <a href="https://support.google.com/webmasters/answer/174993?hl=en" target="_BLANK">here</a>, <a href="https://developers.google.com/webmasters/ajax-crawling/" target="_BLANK">here</a> and <a href="https://support.google.com/webmasters/answer/174992?hl=en" target="_BLANK">here</a>.
+			</p>
+		</section>
+
+		<section name="opensource" id="opensource">
+			<h3><a href="#opensource">Is this an open-source project?</a></h3>
+			<p>
+				Yes. But currently, the source is not yet open. I'll publish it on GitHub once its 'presentable'.
+			</p>
+		</section>
+
+		<section name="restrict-crawling" id="restrict-crawling">
+			<h3><a href="#restrict-crawling">Can I restrict it from crawling my site?</a></h3>
+			<p>
+				Yes, you can. Simply add <span class="codeline">&lt;meta name="urlmeta" content="no"&gt;</span> in <span class="codeline">head</span> section of your website/page.</p>
+
+			<p>
+				If you want a more general way then pass a custom header <span class="codeline">urlmeta</span> with <span class="codeline">no</span> as its value.
+			</p>
+			<p>Here are some examples on how to set it up on your server:</p>
+			<div class="code" style="display: block;">
+				<div class="head">Apache .htaccess</div>
+				<div class="body">Header add urlmeta "no"</div>
+			</div>
+			<p></p>
+			<div class="code" style="display: block;">
+				<div class="head">NGINX nginx.conf</div>
+				<div class="body">add_header urlmeta no</div>
+			</div>
+		</section>
+
+		<section name="contact" id="contact">
+			<h3><a href="#contact">I have something else to ask. How do I contact you?</a></h3>
+			<p>You can <a href="https://docs.google.com/forms/d/1HD5KOapK9zXoyU9oBs3YqHqBxL2MHJj4nN4piW7ky2M/" target="_BLANK">fill this form</a> or just <a href="https://twitter.com/intent/tweet?text=Hey%20@moinism!" target="_blank">Tweet me</a> and I'll get back to you.</p>
+		</section>
+	</div>
+
+	<footer>
+		Made with <span class="heart" title="Love">&hearts;</span> &nbsp;&nbsp;&nbsp; in <span title="Islamabad, Pakistan">Pakistan</span> by <a href="https://moin.im?ref=urlmeta" target="_blank" class="wlink">Moin Uddin</a>
+
+		<div class="links">
+			<a href="dev-api.html">API Docs</a>
+			<a href="for-websites.html">For Websites</a>
+			<a href="humans.txt" target="_BLANK">About</a>
+			<a href="https://docs.google.com/forms/d/1HD5KOapK9zXoyU9oBs3YqHqBxL2MHJj4nN4piW7ky2M/" title="contact for any suggestion, bug or help." target="_BLANK">Contact</a>
+		</div>
+	</footer>
+	<link rel="stylesheet" type="text/css" href="assets/css/normal.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300|Source+Code+Pro:300,400|Open+Sans:400,300' rel='stylesheet' type='text/css'>
+</body>
+</html>

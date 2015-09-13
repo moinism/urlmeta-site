@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>URL Meta - Access meta info of any URL</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/normal.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<meta name="humans" content="humans.txt" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="google-site-verification" content="qDWb5r_GXyRT7r9Rao83qhFpKRKjhaOIA7l19rLFZ6s" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+	<meta property="og:title" content="URL Meta" />
+	<meta property="og:description" content="URL Meta solves the common developer problem: scrape the web. It gives you the detail about a URL and it is Free." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://urlmeta.org" />
+	<meta property="og:image" content="http://urlmeta.org/apple-touch-icon.png" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:creator" content="@moinism" />
+</head>
+<body>
+	<header>
+		<div class="container">
+			<h1>URL Meta</h1>
+			<h2>API to access meta of any URL</h2>
+			<p>
+				<a href="dev-api.html" class="button cta">Read API docs</a>
+
+				&nbsp;&nbsp;&nbsp; Or <a href="for-websites.html" class="link">Website owner FAQs</a>
+			</p>
+			<div class="code" style="">
+				<h3 class="head">Request</h3>
+				<div class="body" style="height:198px;" id="sample"></div>
+				<div class="footer">
+				 	<span class="langsel">Language: <select id="lang">
+						<option value="shell">Shell</option>
+						<option value="php">PHP</option>
+						<option value="ajax">jQuery</option>
+						<option value="xhr">JavaScript</option>
+						<option value="nodejs">NodeJS</option>
+						<option value="ruby">Ruby</option>
+						<option value="python">Python</option>
+						<option value="swift">Swift</option>
+						<option value="go">Go</option>
+						<option value="obec">Objective-C</option>
+						<option value="java">Java</option>
+					</select></span>
+				</div>
+  			</div>
+
+			<div class="code output">
+				<h3 class="head">JSON Response</h3>
+				<div class="body">{
+ "result": {
+  "status": "OK"
+ },
+ "meta":{
+  "title": "Startup Bundle - The best and biggest resource bundle for startups",
+  "description": "This bundle contains all the tools and resource a startup could use. All the stuff on a massive discounted price. upto 98% off.",
+  "favicon": "https://startupbundle.com/favicon.png"
+ }
+}
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="container" style="width:60%;">
+		<section name="about" id="about">
+			<h3><a href="#about">What is URL Meta?</a></h3>
+			<p>urlmeta.org is a free service developed by developer for developers. It work as an API to provide detail about a URL. A common problem/task faced by web developers is to get the detail of any given URL. Get the title, description and some other tags.</p> <p>This is what urlmeta.org solves.</p>
+		</section>
+		<section name="why" id="why">
+			<h3><a href="#why">Why use it?</a></h3> 
+			<p>urlmeta.org has already done the work for you. You don't need to write scripts to crawl/scrape the pages any more. urlmeta.org provides the information needed. So you can now spend that time to write some other cool things in your project. And.. it is free! :)</p>
+		</section>
+		<section name="usage" id="usage">
+			<h3><a href="#usage">How to use it</a></h3>
+			<p>Usage is pretty simple. Just make a <span class="codeline">GET</span> call and pass the URL to API endpoint:  <span class="codeline">https://api.urlmeta.org</span> and you are done.</p>
+			<p>Here is an example to show you how:<br/>
+
+			If you want to get the meta of <span class="codeline">example.com</span> then all you have to do is call <span class="codeline">https://api.urlmeta.org/?url=http://example.com</span>
+			</p>
+			<p>See <a href="dev-api.html" target="_blank">API docs</a> for more details.</p>
+		</section>
+		<section name="demo" id="demo">
+			<h3><a href="#demo">Demo</a></h3>
+			<p>Enter a URL and see its meta</p>
+			<form id="demoForm">
+				<input type="url" class="input demoUrl" name="url" placeholder="https://moin.im" required/>
+				<button class="button demoBtn">Show me meta</button>
+				<label for="onlyHead">
+					<input type="checkbox" name="onlyHead" id="onlyHead" /> Send <span class="codeline">onlyHead</span> request. <a href="dev-api.html#basics">Read about it</a>.
+				</label>
+			</form>
+			<div id="demoData">
+				<h4>Meta</h4>
+				<pre id="demoMeta"></pre>
+			</div>
+		</section>
+	</div>
+
+	<footer>
+		Made with <span class="heart" title="Love">&hearts;</span> &nbsp;&nbsp;&nbsp; in <span title="Islamabad, Pakistan">Pakistan</span> by <a href="https://moin.im?ref=urlmeta" target="_blank" class="wlink">Moin Uddin</a>
+
+		<div class="links">
+			<a href="dev-api.html">API Docs</a>
+			<a href="for-websites.html">For Websites</a>
+			<a href="humans.txt" target="_BLANK">About</a>
+			<a href="https://docs.google.com/forms/d/1HD5KOapK9zXoyU9oBs3YqHqBxL2MHJj4nN4piW7ky2M/" title="contact for any suggestion, bug or help." target="_BLANK">Contact</a>
+		</div>
+	</footer>
+
+	<script type="text/javascript" src="langs.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.js"></script>
+	<script type="text/javascript" src="assets/js/script.js"></script>
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300|Source+Code+Pro:300,400|Open+Sans:400,300' rel='stylesheet' type='text/css'>
+</body>
+</html>

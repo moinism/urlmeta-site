@@ -1,0 +1,16 @@
+# TEAM
+
+    Moin Uddin -- Creator & Maintainer -- https://moin.im - @moinism
+
+# THANKS
+	
+	https://google.com/fonts for Roboto, Source Code Pro & Open Sans fonts used on site 
+	https://heroku.com for hosting API
+	https://gitub.com for hosting main site
+	https://apiembed.com for sample codes
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    JavaScript/jQuery
+    NodeJS
