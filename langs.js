@@ -1,5 +1,5 @@
 var langs = {
-	"shell": "\n // simply send a GET a request \n // with target URL in <i>url</i> parameter\n\ncurl --request GET / \n  --url 'https://api.urlmeta.org/?url=https://startupbundle.com'\n\n",
+	"shell": "\n // simply send a GET a request \n // with target URL in <i>url</i> parameter\n\ncurl --request GET \ \n  --url 'https://api.urlmeta.org/?url=https://startupbundle.com'\n\n",
 	"php" : "\n&lt;?php\n\n  $url 	   = urlencode( 'https://startupbundle.com' );\n  $urlmeta = file_get_contents( 'https://api.urlmeta.org/?url='. $url );\n  $urlmeta = json_decode( $urlmeta );\n  print_r( $urlmeta );\n\n?&gt;",
 	"ajax": 'var url = encodeURIComponent("https://startupbundle.com");\nvar settings = {\n  "async": true,\n  "crossDomain": true,\n  "url": "https://api.urlmeta.org/?url=" + url,\n  "method": "GET",\n};\n\n$.ajax(settings).done(function (response) {\n  console.log(response);\n});',
 	"xhr" : 'var url = encodeURIComponent("https://startupbundle.com"), data = null;\n\nvar xhr = new XMLHttpRequest();\n\nxhr.addEventListener("readystatechange", function () {\n  if (this.readyState === this.DONE) {\n    console.log(this.responseText);\n  }\n});\n\nxhr.open("GET", "https://api.urlmeta.org/?url=" + url);\n\nxhr.send(data);',
