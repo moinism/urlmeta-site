@@ -130,12 +130,11 @@ h1, h2, h3, h4 {
 	/*margin-right: 70px;*/
 }
 #lang {
-	/*width: 1px;*/
 	border: 0 !important;
 	border-radius: 0;
-    -webkit-appearance: none;
+    /*-webkit-appearance: none;
     -moz-appearance: none;
-    -ms-expand: none;
+    -ms-expand: none;*/
     outline: none;
 
     transition: .7s box-shadow;
@@ -153,6 +152,7 @@ h1, h2, h3, h4 {
 	box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);
 }
 
+
 .link {
 	color: #E0F7FA;
 }
@@ -168,6 +168,10 @@ p, ul {
 	font-weight: 400;
 	color: #444;
 	font-family: 'Open Sans', sans-serif;
+}
+
+.ul {
+	padding-left: 50px;
 }
 
 .pitch {
