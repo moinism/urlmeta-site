@@ -86,7 +86,11 @@
 
 		<section name="contact" id="contact">
 			<h3><a href="#contact">I have something else to ask. How do I contact you?</a></h3>
-			<p>You can <a href="https://docs.google.com/forms/d/1HD5KOapK9zXoyU9oBs3YqHqBxL2MHJj4nN4piW7ky2M/" target="_BLANK">fill this form</a> or just <a href="https://twitter.com/intent/tweet?text=Hey%20@moinism!" target="_blank">Tweet me</a> and I'll get back to you.</p>
+			<p>You can <a href="https://docs.google.com/forms/d/1HD5KOapK9zXoyU9oBs3YqHqBxL2MHJj4nN4piW7ky2M/" target="_BLANK">fill this form</a>, comment below or just <a href="https://twitter.com/intent/tweet?text=Hey%20@moinism!" target="_blank">Tweet me</a> and I'll get back to you.</p>
+		</section>
+		<section>
+			<h3>Discuss:</h3>
+			<div id="disqus_thread"></div>
 		</section>
 	</div>
 
@@ -113,7 +117,14 @@
   ga('send', 'pageview');
 
 </script>
-
+<script type="text/javascript">
+    var disqus_shortname = 'urlmeta';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300|Source+Code+Pro:300,400|Open+Sans:400,300' rel='stylesheet' type='text/css'>
 </body>
 </html>
