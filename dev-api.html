@@ -2,7 +2,6 @@
 <html>
 <head>
 <title>URL Meta - Developer docs on how to use the API</title>
-	<meta name="humans" content="humans.txt" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 	<meta property="og:title" content="URL Meta - Developer API" />
@@ -20,7 +19,6 @@
 			<h2 style="margin:10px;">API Docs</h2>
 			<p class="menu">
 				<a href="/" class="item">Home</a>
-				<a href="for-websites.html" class="item">Website owner FAQs</a>
 			</p>
 		</div>
 	</header>
@@ -28,7 +26,10 @@
 	<div class="container" style="width:60%;">
 		<section name="basics" id="basics">
 			<h3><a href="#basics">API Basics</a></h3>
-			<p>URL Meta API is free and open to everyone. You do not need to authorize or proide an API key. Just get started right away and build us some cool stuff.</p>
+			<p>You'll need to <a href="https://home.urlmeta.org">register and get API key</a> to access the API.</p>
+			<p>URL Meta uses Basic Auth for API access. Which means you'll have to provide an <span class="codeline">Authorization</span> header with every request you make.
+				For auth, you'll have to use your URL Meta account email as username and API key as password.
+			</p>
 			<p>
 				<table>
 					<tr>
@@ -45,7 +46,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2" style="text-align:center;border-bottom:0;padding:20px;"><b>Parameters</b></td>
+						<td colspan="2" style="text-align:center;border-bottom:0;padding:20px;"><b>Query Parameters</b></td>
 					</tr>
 					<tr>
 						<td><span class="codeline">url</span>
@@ -56,16 +57,24 @@
 						</td>
 					</tr>
 					<tr>
-						<td><span class="codeline">onlyHead</span>
+						<td colspan="2" style="text-align:center;border-bottom:0;padding:20px;"><b>Required Headers</b></td>
+					</tr>
+					<tr>
+						<td><span class="codeline">Authorization</span>
 						</td>
 						<td>
-							<i>optional</i><br/>
-							If present, only header information will be fetched. Example use case:<br/>
-							Get file size of a remote .ZIP file
-							<br/>
-							If a target URL responds with a content type other than <span class="codeline">text/html</span>, it would become an <span class="codeline">onlyHead</span> request by default.
+							Format: <span class="codeline">Basic&lt;space&gt;&lt;Base64 econding of 'email:API key'&gt;</span>
+							<br>
+							<p>
+								<b>Example:</b><br> If your account email is <span class="codeline">team@example.com</span> and the API key is <span class="codeline">nfh8y34ouhf389f4t3</span>,
+								the value of <span class="codeline">Authorization</span> header would become: <br> <span class="codeline">Basic dGVhbUBleGFtcGxlLmNvbTpuZmg4eTM0b3VoZjM4OWY0dDM=</span>
+								<br>
+								<br>
+								Here <span class="codeline">dGVhbUBleGFtcGxlLmNvbTpuZmg4eTM0b3VoZjM4OWY0dDM=</span> is Base64 encoding of text <span class="codeline">team@example.com:nfh8y34ouhf389f4t3</span>
+							</p>
 						</td>
 					</tr>
+
 				</table>
 			</p>
 		</section>
@@ -95,14 +104,6 @@
 									</td>
 									<td>
 										Will be present only if the <span class="codeline">status</span> is <span class="codeline">ERROR</span>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<span class="codeline">onlyHead</span>
-									</td>
-									<td>
-										Will be present only if the request was <span class="codeline">onlyHead</span>
 									</td>
 								</tr>
 								</table>
@@ -149,21 +150,6 @@
    "title": "Startup Bundle - The best and biggest resource bundle for startups",
    "description": "This bundle contains all the tools and resource a startup could use. All the stuff on a massive discounted price. upto 98% off.",
    "favicon": "https://startupbundle.com/favicon.png"
- }
-}
-</div>
-		</div>
-		<p></p>
-		<div class="code" style="display: block;">
-				<div class="head">Successful Call with <span class="codeline">onlyHead</span></div>
-			<div class="body">{
- "result": {
-   "status": "OK"
- },
- "meta": {
-   "url": "https://lab.moin.im/public/favicon.png",
-   "type": "image/png",
-   "size": "16892"
  }
 }
 </div>
@@ -245,59 +231,32 @@
 				</table>
 		</section>
 		<section name="api-terms" id="api-terms">
-			<h3><a href="#api-terms">Terms of API usage</a></h3>
-			<p>URLMeta.org API is totaly free to use. You can make as many requests as you wish. But to keep it free, you must not abuse it's use.</p>
-
-			<p>Do not use this service to build search engine crawlers, indexers. If a request is repitative, or you think you'll also need it again then do cache it. It'll lower the load on our server as well as the requested site bandwidth.</p>
-		</section>
-		<section name="contribute" id="contribute">
-			<h3><a href="#contribute">Contribute to this service</a></h3>
-			<p>There are a lot of ways you can contribute to this service:</p>
-			<ul>
-				<li>Share it - Let others know about and save their time too.</li>
-				<li>Write sample code - Write the sample codes and tutorials in a programming language you know. We'll put that code and give you the credit of it.</li>
-				<li>Point out bugs - If there's a bug you've found then <a href="https://github.com/moinism/urlmeta-api">open an issue</a>.</li>
-				<li>Suggest something usefull - If you think we can use another tool to make this API more powerfull then do not hesitate to tell us.</li>
-			</ul>
-			<p>Use the <a href="https://docs.google.com/forms/d/1HD5KOapK9zXoyU9oBs3YqHqBxL2MHJj4nN4piW7ky2M/" target="_BLANK">form here</a> to contribute your sample code, bug reports and suggestions.</p>
-		</section>
-		<section>
-			<h3>Discuss:</h3>
-			<div id="disqus_thread"></div>
+			<h3><a href="#api-terms">Problem</a></h3>
+			<p>If the docs are missing something or you're facing an unexpected problem, please <a href="mailto:moin@urlmeta.org?subject=URLMeta%20Usage">reach out to me</a>.</p>
 		</section>
 	</div>
 
 	<footer>
-		Made with <span class="heart" title="Love">&hearts;</span> &nbsp;&nbsp;&nbsp; in <span title="Islamabad, Pakistan">Pakistan</span> by <a href="https://moin.im?ref=urlmeta" target="_blank" class="wlink">Moin Uddin</a>
+		Made with <span class="heart" title="Love">❤️</span> &nbsp;&nbsp;&nbsp; in <span title="Islamabad, Pakistan">Pakistan</span> by <a href="https://moin.im?ref=urlmeta" target="_blank" class="wlink">Moin Uddin</a>
 
 		<div class="links">
 			<a href="dev-api.html">API Docs</a>
-			<a href="for-websites.html">For Websites</a>
 		</div>
 	</footer>
 
 	<link rel="stylesheet" type="text/css" href="assets/css/normal.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-43461442-1', 'auto');
-  ga('send', 'pageview');
+	ga('create', 'UA-43461442-1', 'auto');
+	ga('send', 'pageview');
 
-</script>
-<script type="text/javascript">
-    var disqus_shortname = 'urlmeta';
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+	</script>
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300|Source+Code+Pro:300,400|Open+Sans:400,300' rel='stylesheet' type='text/css'>
 </body>
 </html>
